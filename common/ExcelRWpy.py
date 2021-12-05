@@ -28,20 +28,22 @@ class ExcelRW:
     def read_data(self, sheetName = None, row = None, col = None):
         if sheetName == None or sheetName == "":
             for sheet in self.sheet_list:
-                self.read_sheet(sheet, row, col)
+                cases = self.read_sheet(sheet, row, col)
                 print("--------")
         else:
             cases =  self.read_sheet(sheetName, row, col)
-            print("用例%s"%cases)
+            print("用例:%s"%cases)
+            return cases
 
     #读取单个sheet数据,除指定sheet名称必填，其他行列选填
     #只填写了行，就获取当前行所有的数据
     #只填写了列，就获取当前列所有的数据
     def read_sheet(self, sheetName, row = None, col = None):
-        cases = []
+        cases = {}
+        case = []
         sheetObj = self.excel_workbook.get_sheet_by_name(sheetName)
-        if row == None or sheetName == " ":
-            if col == None or sheetName == "":
+        if row == None:
+            if col == None:
                 max_row, max_column = self.read_excel(sheetName)
                 i = 2
                 while (i <= max_row):
@@ -49,16 +51,20 @@ class ExcelRW:
                     while j <= max_column:
                         data = sheetObj.cell(i, j).value
                         j += 1
-                        print(data)
+                        # print(1111)
+                        case.append(data)
+                    cases.setdefault(i, case)
                     i += 1
+
             else:
                 max_row, max_column = self.read_excel(sheetName)
                 i = 2
                 while (i <= max_row):
-                    aa = sheetObj.cell(i, col).value
-                    print(aa)
+                    data = sheetObj.cell(i, col).value
+                    # print(aa)
+                    cases.append(data)
                     i += 1
-        elif col == None or sheetName == "":
+        elif col == None:
                 max_row, max_column = self.read_excel(sheetName)
                 j = 1
                 while j <= max_column:
@@ -68,11 +74,16 @@ class ExcelRW:
                 return cases
         else:
             aa = sheetObj.cell(row, col).value
-            print(aa)
-
+            # print(aa)
+        return cases
 
 if __name__ == "__main__":
     execlRW = ExcelRW("F:\工作文件\接口自动化Demo.xlsx")
     # row, col = execlRW.read_excel("")
-    execlRW.read_data("勋章", 2)
+    cases = execlRW.read_data("勋章")
+    for keys in cases.keys():
+        case = cases.get(keys)
+        for value in case:
+            print(value)
+
     # execlRW.read_sheet("勋章")
