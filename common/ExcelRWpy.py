@@ -35,6 +35,7 @@ class ExcelRW:
             print("用例:%s"%cases)
             return cases
 
+
     #读取单个sheet数据,除指定sheet名称必填，其他行列选填
     #只填写了行，就获取当前行所有的数据
     #只填写了列，就获取当前列所有的数据
@@ -55,7 +56,6 @@ class ExcelRW:
                         case.append(data)
                     cases.setdefault(i, case)
                     i += 1
-
             else:
                 max_row, max_column = self.read_excel(sheetName)
                 i = 2
@@ -65,6 +65,7 @@ class ExcelRW:
                     cases.append(data)
                     i += 1
         elif col == None:
+
                 max_row, max_column = self.read_excel(sheetName)
                 j = 1
                 while j <= max_column:
@@ -77,13 +78,13 @@ class ExcelRW:
             # print(aa)
         return cases
 
+
 if __name__ == "__main__":
     execlRW = ExcelRW("F:\工作文件\接口自动化Demo.xlsx")
     # row, col = execlRW.read_excel("")
     cases = execlRW.read_data("勋章")
     for keys in cases.keys():
         case = cases.get(keys)
-        for value in case:
-            print(value)
+        # for value in case:
+        #     print(value)
 
-    # execlRW.read_sheet("勋章")
