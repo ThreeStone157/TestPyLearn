@@ -86,6 +86,5 @@ if __name__ == "__main__":
     for keys in cases.keys():
         case = cases.get(keys)
         print(case)
-        # for value in case:
-        #     print(value)
+
 

@@ -16,13 +16,13 @@ class RequetsApi:
             res = requests.post(url, data=json.dumps(data))
         return res
 
+
     # 请求get方法
     def get_method(self, url, data=None, header=None):
         if header is not None:
             res = requests.get(url, data=json.dumps(data), headers=header)
         else:
             res = requests.get(url, data=json.dumps(data))
-
         return res
 
     #提供给调用的方法
@@ -39,4 +39,3 @@ if __name__ == "__main__":
     resApi = RequetsApi()
     res = resApi.send("https://analytics.cnblogs.com/api/v1/reports", "post")
     print(res)
-

@@ -85,13 +85,11 @@ class operate_excel:
     def close(self):
         self.excel_workbook.close()
 
-
 if __name__ == "__main__":
     execlRW = operate_excel("F:\工作文件\接口自动化Demo.xlsx")
     # row, col = execlRW.read_excel("")
     cases_data = execlRW.read_datas()
     print(cases_data[3]["URL"])
-    for case in cases_data:
-        print(case)
+
 
 
