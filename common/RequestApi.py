@@ -14,10 +14,8 @@ class RequetsApi:
             res = requests.post(url, data=json.dumps(data), headers=header)
         else:
             res = requests.post(url, data=json.dumps(data))
-        if str(res) =="<Response [200]>":
-            return res.json()
-        else:
-            return res.text
+        return res
+
 
     # 请求get方法
     def get_method(self, url, data=None, header=None):
@@ -25,10 +23,8 @@ class RequetsApi:
             res = requests.get(url, data=json.dumps(data), headers=header)
         else:
             res = requests.get(url, data=json.dumps(data))
-        if str(res) =="<Response [200]>":
-            return res.json()
-        else:
-            return res.text
+        return res
+
     #提供给调用的方法
     def send(self, url, method, data=None, header=None):
         method = method.upper()
@@ -39,4 +35,7 @@ class RequetsApi:
         else:
             print("请求方式错误！！！")
 
-
+if __name__ == "__main__":
+    resApi = RequetsApi()
+    res = resApi.send("https://analytics.cnblogs.com/api/v1/reports", "post")
+    print(res)

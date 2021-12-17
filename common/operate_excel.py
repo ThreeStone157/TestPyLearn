@@ -79,13 +79,17 @@ class operate_excel:
         else:
             cases =  self.read_sheet(sheetName)
             cases_data.extend(cases)
+        self.close()
         return cases_data
+
+    def close(self):
+        self.excel_workbook.close()
 
 if __name__ == "__main__":
     execlRW = operate_excel("F:\工作文件\接口自动化Demo.xlsx")
     # row, col = execlRW.read_excel("")
     cases_data = execlRW.read_datas()
-    for case in cases_data:
-        print(case)
+    print(cases_data[3]["URL"])
+
 
 

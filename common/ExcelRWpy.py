@@ -85,6 +85,6 @@ if __name__ == "__main__":
     cases = execlRW.read_data("勋章")
     for keys in cases.keys():
         case = cases.get(keys)
-        # for value in case:
-        #     print(value)
+        print(case)
+
 
