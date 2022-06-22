@@ -1,6 +1,7 @@
 #coding: utf-8
-
 import openpyxl
+
+#封装的读取excel数据功能类
 
 class ExcelRW:
     file_path = ""
