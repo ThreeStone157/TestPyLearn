@@ -1,9 +1,10 @@
 #coding: utf-8
-
 import openpyxl
 from openpyxl.styles import Alignment
 from openpyxl.styles import Font
 from openpyxl.styles import Side, Border, colors
+
+#封装的读取excel数据功能类
 
 class ExcelRW:
     file_path = ""
