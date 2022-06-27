@@ -1,4 +1,0 @@
-2022-06-22 21:48:26,771 - [test_Excel.py-->line:33] - INFO: 请求正常，返回的结果是:{"result":0,"msg":"ok","data":{"is_finish_guide":true}}
-
-2022-06-22 21:48:27,076 - [test_Excel.py-->line:33] - INFO: 请求正常，返回的结果是:{"result":0,"msg":"success","data":[]}
-

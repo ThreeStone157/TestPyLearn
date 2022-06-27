@@ -1,13 +1,13 @@
 import json
 import logging
 
-from common.Mylogging import MyLogger
+from common.mylogging import MyLogger
 
 
-class checkBack:
+class CheckBack:
     back = None
-    mylog = MyLogger()
-    mylog.create_logger()
+    my_log = MyLogger()
+    my_log.create_logger()
 
     def __init__(self, back):
         self.back = back
@@ -32,4 +32,4 @@ class checkBack:
             except AssertionError as ae:
                 logging.error("{}请求返回结果是:{},预期返回结果:{}".format(url, self.back.text, expect_result))
                 return "error"
-        return "successful"
+        return "success_back"

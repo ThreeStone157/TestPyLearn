@@ -1,4 +1,0 @@
-2022-06-21 15:00:56,239 - [Mylogging.py-->line:30] - INFO: 这个是Info等级的日志
-2022-06-21 15:00:56,239 - [Mylogging.py-->line:31] - WARNING: 这个是Warining等级的日志
-2022-06-21 15:00:56,239 - [Mylogging.py-->line:32] - ERROR: 这个是error等级的日志
-2022-06-21 15:00:56,239 - [Mylogging.py-->line:33] - CRITICAL: 这个是critical等级的日志

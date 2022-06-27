@@ -3,31 +3,29 @@ import unittest
 
 from ddt import ddt, data
 
-from common.Mylogging import MyLogger
-from common.RequestApi import RequetsApi
-from common.OperateExcel import operate_excel
+from common.checkback import CheckBack
+from common.mylogging import MyLogger
+from common.requestApi import RequestApi
+from common.operate_excel import OperateExcel
 import logging
 
 
 @ddt
-class testExcels(unittest.TestCase):
-    execlRW = operate_excel("F:\工作文件\hpjyInterface.xlsx")
-    cases_data = execlRW.read_datas()
-    mylog = MyLogger()
-    mylog.create_logger()
+class TestExcels(unittest.TestCase):
+    execlRW = OperateExcel(r"E:\Work\和平精英\hpjyInterface.xlsx")
+    cases_data = execlRW.read_data_table()
+    my_log = MyLogger()
+    my_log.create_logger()
 
     @data(*cases_data)
     def test_excel(self, case):
-        print(case)
         url = case["URL"]
         method = case["请求方式"]
-        resApi = RequetsApi()
-        res = resApi.send(url, method)
+        res_api = RequestApi()
+        res = res_api.send(url, method, case["请求数据"])
         try:
-            print(res.status_code)
             self.assertEqual(200, res.status_code)
         except AssertionError as e:
-            # print(e)
             logging.error("{}请求错误返回结果是:{}".format(url, res.text))
         finally:
             logging.info("请求正常，返回的结果是:{}".format(res.text))

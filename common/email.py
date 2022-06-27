@@ -3,13 +3,15 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.application import MIMEApplication
 
-#封装的QQ邮箱发送功能类
 
+# 封装的QQ邮箱发送功能类
 class Email:
-    def send_email(self, file_path):
+
+    @staticmethod
+    def send_email(file_path):
         # 第一步： 连接到smtp服务器
         smtp = smtplib.SMTP_SSL("smtp.qq.com", "465")
-        print(smtp)
+        # print(smtp)
         smtp.login("992259738@qq.com", "fnpvsxnodykhbceg")
         # 第二步：构建邮件
         smg = MIMEMultipart()
@@ -21,13 +23,12 @@ class Email:
         file_msg.add_header('content-disposition', 'attachment', filename='report.html')
         smg.attach(file_msg)
 
-        smg["Subject"] = "Test1测试报告" # 主题
-        smg["From"] = "992259738@qq.com" # 邮件内显示的发件人
-        smg["To"] = "cl992259@163.com" # 邮件内显示的收件人
+        smg["Subject"] = "Test1测试报告"  # 主题
+        smg["From"] = "992259738@qq.com"  # 邮件内显示的发件人
+        smg["To"] = "cl992259@163.com"  # 邮件内显示的收件人
 
         # 第三步发送邮件
         smtp.send_message(smg, from_addr="992259738@qq.com", to_addrs="cl992259@163.com")
-
 
 
 if __name__ == "__main__":
