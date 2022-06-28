@@ -1,4 +1,5 @@
 # coding:utf-8
+import datetime
 import logging
 import time
 from logging.handlers import TimedRotatingFileHandler
@@ -16,8 +17,11 @@ class MyLogger(object):
         stream_handler = logging.StreamHandler()
         stream_handler.setLevel("ERROR")
         my_logger.addHandler(stream_handler)
+
+        times = datetime.datetime.now()
+        times_str = times.strftime('%Y_%m_%d_%H_%M_%S')
         # 使用时间滚动的文件处理器
-        log_file_handler = TimedRotatingFileHandler(filename='{}.txt'.format(seconds).format(), when='D', interval=1, backupCount=10,encoding="utf8")
+        log_file_handler = TimedRotatingFileHandler(filename=r'..\log\{}.txt'.format(times_str), when='D', interval=1, backupCount=10, encoding="utf8")
         log_file_handler.setLevel("INFO")
         my_logger.addHandler(log_file_handler)
         formatter = logging.Formatter('%(asctime)s - [%(filename)s-->line:%(lineno)d] - %(levelname)s: %(message)s')

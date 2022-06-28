@@ -4,6 +4,7 @@ import logging
 from common.mylogging import MyLogger
 
 
+# 接口返回校验类 分为3级：0级是只校验返回的状态200，1级是校验部分的字段数据，2级是校验返回和配置预期返回是否一致
 class CheckBack:
     back = None
     my_log = MyLogger()

@@ -5,7 +5,7 @@ from openpyxl.styles import Font
 from openpyxl.styles import Side, Border, colors
 
 
-# 封装的读取excel数据功能类
+# 封装的读取excel数据功能类(废弃类)
 class ExcelRW:
     file_path = ""
     excel_workbook = ""

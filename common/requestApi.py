@@ -34,7 +34,6 @@ class RequestApi:
     def send(self, url, method="post", data=None, header=None):
         method = method.upper()
         url = self.ry.read_request_parameter(url, "现网")
-        # url = "https://hpjy-op.tga.qq.com:443" + url
         if method == "POST":
             return self.post_method(url, data, header)
         elif method == "GET":

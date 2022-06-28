@@ -1,24 +1,28 @@
 # coding:utf-8
 import unittest
-
 from ddt import ddt, data
-
-from common.checkback import CheckBack
+import os
+import sys
+sys.path.append(r'.')
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir)))
 from common.mylogging import MyLogger
 from common.requestApi import RequestApi
 from common.operate_excel import OperateExcel
 import logging
+from common.read_yaml import ReadYaml
 
 
 @ddt
 class TestExcels(unittest.TestCase):
-    execlRW = OperateExcel(r"E:\Work\和平精英\hpjyInterface.xlsx")
-    cases_data = execlRW.read_data_table()
     my_log = MyLogger()
     my_log.create_logger()
+    ry = ReadYaml()
+    read_execl = OperateExcel(ry.parameter["testcase_file_path"])
+    cases_data = read_execl.read_data_table()
 
     @data(*cases_data)
     def test_excel(self, case):
+        print(111)
         url = case["URL"]
         method = case["请求方式"]
         res_api = RequestApi()
